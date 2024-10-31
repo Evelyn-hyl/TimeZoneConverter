@@ -1,0 +1,480 @@
+@font-face {
+    font-family: 'Didot';
+    src: url('assets/fonts/Didot\ Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Didot';
+    src: url('assets/fonts/Didot\ Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Grantha Sangam MN';
+    src: url('assets/fonts/Grantha\ Sangam\ MN\ Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+
+.overlay-container {
+    position: relative;
+}
+
+.content-container {
+    position: relative; /* Creates a positioning context */
+    margin-left: 220px;
+    margin-right: 220px;
+    padding-left: 20px; /* Adjusts space for the pseudo-element line */
+}
+
+.converter-input-container {
+    position: relative; /* Creates a positioning context */
+    margin-left: 220px;
+    margin-right: 220px;
+    border-left: 20px; /* Adjusts space for the pseudo-element line */
+}
+
+.converter-output-container {
+    position: relative; /* Creates a positioning context */
+    margin-left: 220px;
+    margin-right: 220px;
+    border-left: 20px; /* Adjusts space for the pseudo-element line */
+}
+
+.conversion-result-container {
+    position: relative; /* Creates a positioning context */
+    margin-left: 360px;
+    margin-right: 220px;
+    margin-top: 80px;
+    border-left: 20px; /* Adjusts space for the pseudo-element line */
+}
+
+/* Lines */
+.top-vertical-line {
+    position: relative;
+    margin-left: 0px;
+    padding-left: 0px; /* To give some space for the line */
+}
+
+.top-vertical-line::before {
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 0;
+    width: 1px;
+    height: calc(100% - 41px);;
+    background: #f4eadf; /* Line color */
+}
+
+.vertical-line {
+    position: relative;
+    margin-right: 20px;
+}
+
+.vertical-line::before {
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 100%;
+    right: 0;
+    width: 1px;
+    height: calc(100vh - 100%);
+    background: #f4eadf; /* Line color */
+}
+
+/* Descriptions */
+.box-descriptions-container {
+    position: relative;
+    display: flex;
+    align-items: baseline; /* Ensures headers align at their baseline */
+    margin-left: 60px;
+    margin-right: 10px;
+    top: 100%;
+    margin-bottom: -5px;
+}
+
+/* Input and Output */
+.input-field-container {
+    position: relative;
+    display: flex;
+    align-items: top; /* Ensures headers align at their baseline */
+    margin-left: 140px;
+    margin-right: 90px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.output-field-container {
+    position: relative;
+    display: flex;
+    align-items: top; /* Ensures headers align at their baseline */
+    margin-left: 140px;
+    margin-right: 90px;
+}
+
+.time-zone-selection-box {
+    position: static;
+    border-radius: 15px;
+    padding: 10px; /* Adds space inside the container */
+    width: 300px; /* Sets a fixed width for the container */
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #f4eadf; /* Sets a background color */
+    box-shadow: 0 4px 8px rgba(126, 129, 100, 1); /* Optional: adds shadow for better visibility */    left: 0px;
+    top: 100%;
+}
+
+.time-zone-selection-box ::placeholder {
+    font-family: sans-serif;
+    font-weight: 100;
+    color: #b1a396; 
+}
+
+
+.time-zone-selection-box input {
+    font-family: sans-serif;
+    font-weight: 100;
+    color:#b1a396;
+    letter-spacing: 1px;
+    width: 100%; /* Makes the dropdown take the full width of the container */
+    padding: 8px 10px; /* Adds padding inside the dropdown */
+    border: 1px solid #f4eadf; /* Gives the dropdown a border */
+    border-radius: 4px; /* Optionally rounds the corners */
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    background-color: #f4eadf;
+    overflow: hidden; /* Keeps content within the bounds of the box */
+}
+
+.time-zone-selection-box input:focus {
+    outline: none; /* Removes the default outline */
+    border: 2px solid #f4eadf; /* Changes the border to a custom color */
+}
+
+.time-zone-search-results {
+    position: absolute; /* Positions the results absolutely within their relative parent */
+    width: 275px; /* Matches the width of the input box */
+    max-height: 200px; /* Limits the height and allows for scrolling */
+    overflow-y: auto; /* Adds a scrollbar when content overflows */
+    background: #f4eadf; /* Background color for the results */
+    border: 1px solid #b1a396; /* Border to match the input box */
+    border-top: none; /* Removes the top border */
+    z-index: 1000; /* Makes sure the dropdown appears above other content */
+    display: none;
+}
+
+.time-zone-search-results ul {
+    list-style: none;
+    padding-left: 0px;
+    border-radius: 15px;
+}
+
+.time-zone-search-results li {
+    list-style: none;
+    padding: 10px; /* Padding for each result */
+    cursor: pointer; /* Changes the cursor to indicate clickable items */
+    border-bottom: 1px solid #eee; /* A subtle separator between items */
+}
+
+.time-zone-search-results li:hover {
+    background-color: #f9f9f9; /* Changes background on hover */
+}
+
+.hour-selection-box {
+    position: static;
+    border-radius: 15px;
+    padding: 10px; /* Adds space inside the container */
+    width: 90px; /* Sets a fixed width for the container */
+    height: 57px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 5px;
+    background-color: #f4eadf; /* Sets a background color */
+    box-shadow: 0 4px 8px rgba(126, 129, 100, 1); /* Optional: adds shadow for better visibility */
+    left: 0px;
+    top: 100%;
+}
+
+.hour-selection-box select {
+    font-family: sans-serif;
+    font-weight: 100;
+    color:#b1a396;
+    letter-spacing: 1px;
+    max-height: 200px; /* Limits the height and allows for scrolling */
+    width: 100%; /* Makes the dropdown take the full width of the container */
+    padding: 8px 10px; /* Adds padding inside the dropdown */
+    border: 1px solid #f4eadf; /* Gives the dropdown a border */
+    border-radius: 4px; /* Optionally rounds the corners */
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    background-color: #f4eadf;
+    cursor: pointer;
+}
+
+
+/* Targeting the focused state of the dropdown */
+.hour-selection-box select:focus {
+    outline: none; /* Removes the default outline */
+    border: 2px solid #f4eadf; /* Changes the border to a custom color */
+}
+
+.time-colon {
+    position: static;
+    font-family:sans-serif; 
+    font-weight: 500; 
+    color: #f4eadf;
+    align-items: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.minute-input-box {
+    font-family: sans-serif;
+    font-weight: 100;
+    color: #b1a396;
+    position: static; /* Ensures it can be positioned in layout if necessary */
+    border-radius: 15px;
+    padding: 20px;
+    margin: 5px 20px 20px 5px;
+    background-color: #f4eadf;
+    box-shadow: 0 4px 8px rgba(126, 129, 100, 1);
+    overflow: hidden; /* Keeps content within the bounds of the box */
+    display: flex; /* Centers content and allows easy vertical centering */
+    align-items: center; /* Center content vertically */
+    justify-content: left; /* Center content horizontally */
+    height: 57px; /* Adjust height as needed */
+    width: 90px;
+    border: none;
+}
+
+.date-input-box {
+    font-family: sans-serif;
+    font-weight: 100;
+    color:#b1a396;
+    position: static;
+    border-radius: 15px;
+    padding: 10px; /* Adds space inside the container */
+    width: 200px; /* Sets a fixed width for the container */
+    height: 57px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center; /* Center content vertically */
+    background-color: #f4eadf; /* Sets a background color */
+    box-shadow: 0 4px 8px rgba(126, 129, 100, 1); /* Optional: adds shadow for better visibility */
+    top: 100%;
+}
+
+.am-pm-container {
+    display: flex;                  /* Enables flexbox layout */
+    justify-content: space-between; /* Distributes space between the buttons */
+    align-items: top;            /* Aligns buttons vertically in the center */
+}
+
+.am-pm-button {
+    font-family: sans-serif;
+    font-weight: 100;
+    color: #b1a396; /* Text color */
+    letter-spacing: 1px;
+    margin-top: 5px;
+    padding: 8px 10px;
+    border:#f4eadf;
+    width: 80px; /* Adjusted for side-by-side buttons */
+    height:57px;
+    background-color: #f4eadf; /* Background color */
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#amButton:hover {
+    background-color: #d1c480;
+}
+
+#pmButton:hover {
+    background-color: #d1c480;
+}
+
+.am-pm-button:active {
+    box-shadow: 0 4px 8px rgb(108, 110, 83);
+}
+
+/* Active state styling for toggling */
+.active {
+    background-color: #d1c480; /* Inverted background color */
+    color: #f4eadf; /* Inverted text color */
+    border-color: #d1c480;
+}
+
+#dateInput {
+    font-family: sans-serif;
+    font-weight: 100;
+    color:#b1a396;
+    width: 100%;
+    padding: 8px 10px; /* Adds padding inside the dropdown */
+    background-color: #f4eadf;
+    border: 1px solid transparent; /* Makes the border invisible when not focused */
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    border-radius: 3px;
+}
+
+#dateInput:focus {
+    outline: none;
+}
+
+#dateInput::placeholder {
+    font-family: sans-serif;
+    font-weight: 100;
+    color: #b1a396; 
+}
+
+/* Headers */
+#h1TimeZone {
+    color: #f4eadf;
+    font-family: 'Didot', Bodoni Moda SC;
+    font-size: 62px;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-align: left;
+    padding-top: 160px;
+    margin-bottom: -41px;
+    padding-left: 110px;
+}
+
+#h1Converter {
+    z-index: 1; /* Ensures the header text is above other positioned elements */
+    color: #d1c480;
+    font-family: 'Didot', Bodoni Moda SC;
+    font-size: 130px;
+    font-style: normal;
+    letter-spacing: -2.6px;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 60px;
+    margin-left: 0px;
+    position: relative;
+}
+
+#timeZoneCityDescription {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-left: 115px;
+    color: #f4eadf;
+}
+
+#dateDescription, #dateOutputDescription {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-left: 190px;
+    color: #f4eadf;
+}
+
+#timeDescription, #timeOutputDescription{
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-left: 200px;
+    color: #f4eadf;
+}
+
+#dateOutputDescription, #timeOutputDescription {
+    display: none;
+}
+
+#minuteInput:focus {
+    outline: none;
+}
+
+#minuteInput::placeholder {
+    font-family: sans-serif;
+    font-weight: 100;
+    color: #b1a396; 
+}
+
+#amButton {
+    border-radius: 15px 0px 0px 15px;
+}
+
+#pmButton {
+    border-radius: 0px 15px 15px 0px;
+}
+
+#datepicker {
+    font-family: sans-serif;
+    color: #b1a396;
+}
+
+#convertButton {
+    position: static;
+    font-family: 'Didot', Bodoni Moda SC;
+    font-weight: bold;
+    color: #f4eadf;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0px 20px 20px 20px;
+    background-color: #d1c480;
+    box-shadow: 0 4px 8px rgba(126, 129, 100, 1);
+    display: flex; 
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    height: 60px; /* Adjust height as needed */
+    width: 140px;
+    border: none;
+}
+
+#convertButton:hover {
+    background-color: #aa9e62;
+    color:#f4eadf;
+}
+
+#convertButton:active {
+    box-shadow: 0 4px 8px rgb(108, 110, 83);
+}
+
+#dateOutputDisplay, #hourOutputDisplay, #minuteOutputDisplay {
+    display: none; /* Using flex to easily align text both vertically and horizontally */
+    align-items: center; /* Centers content vertically */
+    justify-content: flex-start; /* Aligns content horizontally to the left */
+    background-color: #d1c480; /* Common background color */
+    color: white; /* Text color set to pale (off-white) */
+    font-family: sans-serif; /* Common font-family */
+    font-weight: 100; /* Font weight */
+    padding: 20px; /* Padding around the content */
+    overflow: hidden; /* Keeps content within the bounds of the box */
+    height: 60px; /* Common height adjustment as needed */
+}
+
+#amOutputDisplay {
+    color: #f4eadf;
+    background-color: #d1c480;
+    border-radius: 15px 0px 0px 15px;
+    display: none;
+}
+
+#outputTimeColon {
+    display: none;
+}
+
+#pmOutputDisplay {
+    color: #f4eadf;
+    background-color: #d1c480;
+    border-radius: 0px 15px 15px 0px;
+    display: none;
+}
+
+.fade-in { animation: fadeIn 5s; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
