@@ -306,9 +306,9 @@
 
 /* Active state styling for toggling */
 .active {
-    background-color: #d1c480; /* Inverted background color */
-    color: #f4eadf; /* Inverted text color */
-    border-color: #d1c480;
+    background-color: #d1c480 !important; /* Inverted background color */
+    color: #f4eadf !important; /* Inverted text color */
+    border-color: #d1c480 !important;
 }
 
 #dateInput {
@@ -369,12 +369,21 @@
     color: #f4eadf;
 }
 
-#dateDescription, #dateOutputDescription {
+#dateDescription {
     font-family: sans-serif;
     font-weight: 100;
     font-size: 15px;
     letter-spacing: 1px;
-    padding-left: 190px;
+    padding-left: 175px;
+    color: #f4eadf;
+}
+
+#dateOutputDescription {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-left: 195px;
     color: #f4eadf;
 }
 
@@ -445,8 +454,8 @@
     display: none; /* Using flex to easily align text both vertically and horizontally */
     align-items: center; /* Centers content vertically */
     justify-content: flex-start; /* Aligns content horizontally to the left */
-    background-color: #d1c480; /* Common background color */
-    color: white; /* Text color set to pale (off-white) */
+    background-color: #f4eadf; /* Common background color */
+    color: #b1a396; /* Text color set to pale (off-white) */
     font-family: sans-serif; /* Common font-family */
     font-weight: 100; /* Font weight */
     padding: 20px; /* Padding around the content */
@@ -455,8 +464,8 @@
 }
 
 #amOutputDisplay {
-    color: #f4eadf;
-    background-color: #d1c480;
+    color: #b1a396;
+    background-color: #f4eadf;
     border-radius: 15px 0px 0px 15px;
     display: none;
 }
@@ -466,15 +475,19 @@
 }
 
 #pmOutputDisplay {
-    color: #f4eadf;
-    background-color: #d1c480;
+    color: #b1a396;
+    background-color: #f4eadf;
     border-radius: 0px 15px 15px 0px;
     display: none;
 }
 
-.fade-in { animation: fadeIn 5s; }
+/* Initial style: hidden and transparent */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+/* Style after fade-in is triggered */
+.visible {
+    opacity: 1;
+}
