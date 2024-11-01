@@ -48,7 +48,7 @@ export function changeDateFormat(dateInput) {
 /**
  * Change time format to append a 0 if there is only a single digit
  * @param {string} timeInput 
- * @returns formatted minut
+ * @returns formatted minute
  */
 export function prependZero(timeInput) {
     var timeInputLength = timeInput.length;
@@ -91,6 +91,17 @@ export function toggleAmPm(Button, amButton, pmButton) {
     }
 }
 
+/**
+ * Creates an alert message string based on the empty fields
+ * @param {*} selectedInputTimezone 
+ * @param {*} selectedOutputTimezone 
+ * @param {*} dateSelected 
+ * @param {*} hourDropdown 
+ * @param {*} minuteInput 
+ * @param {*} amButton 
+ * @param {*} pmButton 
+ * @returns alert message string
+ */
 export function alertIncorrectFields(selectedInputTimezone, selectedOutputTimezone, 
                                         dateSelected, hourDropdown, minuteInput, 
                                         amButton, pmButton) {
